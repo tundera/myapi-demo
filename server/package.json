@@ -1,5 +1,5 @@
 {
-  "name": "@myapi/api",
+  "name": "@myapi/server",
   "description": "Simple GraphQL server built with GraphQL Yoga and Fastify",
   "private": true,
   "version": "0.1.0",

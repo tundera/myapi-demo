@@ -4,7 +4,6 @@ import useSWR from 'swr'
 
 import TeamCard from './components/TeamCard'
 import myapi from './lib/myapi'
-import logo from './logo.svg'
 
 const fetcher = () => myapi.Teams()
 

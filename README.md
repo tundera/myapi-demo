@@ -1,18 +1,38 @@
-# Turborepo starter
+# GraphQL Client Demo
 
-This is an official Yarn v1 starter turborepo.
+This is an example project for demonstrating how an API client package can be generated, versioned,
+and published to make integrating with GraphQL APIs easy and painless. Example projects are provided
+in the `examples` directory to demonstrate how a client package can be used in a variety of frontend
+and backend frameworks.
 
 ## What's inside?
 
-This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package manager. It includes the following packages/apps:
+This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package manager. It includes
+the following packages/apps:
 
-### Apps and Packages
+### Codebase Overview
 
-- `docs`: a [Next.js](https://nextjs.org) app
-- `web`: another [Next.js](https://nextjs.org) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- `server`: a GraphQL server built with [GraphQL Yoga](https://www.graphql-yoga.com/) and
+  [Fastify](https://www.fastify.io/) for serving the GraphQL schema from the `@myapi/schema` package
+- `db`: a [Prisma](https://www.prisma.io/) database client for interacting with the PostgreSQL
+  datalayer accessed in the GraphQL resolver functions
+- `packages`
+
+  - `@myapi/client`: a GraphQL client SDK for interacting with the `myapi` service from both browser
+    and Node.js runtimes, built with [GraphQL Codegen](https://www.graphql-code-generator.com/)
+  - `@myapi/schema`: a code-first GraphQL schema built with [Pothos](https://pothos-graphql.dev/)
+    used in `@myapi/server`
+  - `eslint-config-myapi`: `eslint` configuration shared across packages
+  - `prettier-config-myapi`: `prettier` configuration shared across packages
+  - `tsconfig`: `tsconfig.json`s used throughout the monorepo
+
+- `examples`
+  - `fastify`
+    - a [Fastify](https://www.fastify.io/) server using the `@myapi/client` package in a Node.js
+      runtime
+  - `nextjs`: a [Next.js](**https**://nextjs.org) app using the `@myapi/client` package in both
+    browser and Node.js runtimes
+  - `vite`: a [Vite](https://vitejs.dev/) app using the `@myapi/client` package in a browser runtime
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
@@ -26,52 +46,16 @@ This turborepo has some additional tools already setup for you:
 
 ## Setup
 
-This repository is used in the `npx create-turbo` command, and selected when choosing which package manager you wish to use with your monorepo (Yarn).
+To install codebase dependencies, run:
+
+```sh
+yarn install
+```
 
 ### Build
 
 To build all apps and packages, run the following command:
 
-```
-cd my-turborepo
+```sh
 yarn run build
 ```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-yarn run dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching (Beta)](https://turborepo.org/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching (Beta) you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Pipelines](https://turborepo.org/docs/core-concepts/pipelines)
-- [Caching](https://turborepo.org/docs/core-concepts/caching)
-- [Remote Caching (Beta)](https://turborepo.org/docs/core-concepts/remote-caching)
-- [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
-- [Configuration Options](https://turborepo.org/docs/reference/configuration)
-- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)

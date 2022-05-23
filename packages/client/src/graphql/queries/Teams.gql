@@ -1,0 +1,17 @@
+query Teams {
+  teams {
+    edges {
+      node {
+        city
+        name
+        conference
+        division
+        established
+        colorScheme {
+          primary
+          secondary
+        }
+      }
+    }
+  }
+}

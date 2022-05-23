@@ -1,0 +1,24 @@
+{
+  "name": "@myapi/tsconfig",
+  "version": "0.1.8",
+  "license": "MIT",
+  "author": {
+    "name": "Philip Johnston",
+    "url": "https://github.com/tundera",
+    "email": "tunderadev@gmail.com"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "index.js",
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "node-api.json",
+    "node-library.json",
+    "react-library.json",
+    "remix.json",
+    "scripts.json",
+    "vite.json"
+  ]
+}
